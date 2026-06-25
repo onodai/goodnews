@@ -525,7 +525,7 @@ h1.article-title {
   }
 
   .article-page {
-    padding: 70px 24px 60px;
+    padding: 100px 24px 60px;
   }
 
   .news-list {
@@ -543,4 +543,75 @@ h1.article-title {
   .cue-images {
     padding: 100px 24px 60px;
   }
+}
+
+/* ─── Site map ───────────────────────────────────── */
+
+#site-map {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+  background: rgba(245, 254, 255, 0.92);
+  border: 1px solid #000;
+  padding: 10px;
+  pointer-events: auto;
+}
+
+.sm-top {
+  display: flex;
+  align-items: flex-start;
+}
+
+.sm-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sm-hline {
+  width: 8px;
+  height: 1px;
+  background: #000;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.sm-vline {
+  width: 1px;
+  height: 5px;
+  background: #000;
+}
+
+.sm-sub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.sm-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 13px;
+  border: 1px solid #000;
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 7px;
+  letter-spacing: 0;
+  color: #000;
+  text-decoration: none;
+  background: transparent;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.sm-node.sm-active {
+  background: #000;
+  color: #F5FEFF;
+}
+
+.sm-node:hover {
+  opacity: 0.6;
 }
