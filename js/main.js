@@ -6,12 +6,14 @@ if (toggle && nav) {
   toggle.addEventListener('click', () => {
     toggle.classList.toggle('is-active');
     nav.classList.toggle('is-open');
+    document.body.classList.toggle('nav-open');
   });
 
   nav.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       toggle.classList.remove('is-active');
       nav.classList.remove('is-open');
+      document.body.classList.remove('nav-open');
     });
   });
 
@@ -19,6 +21,7 @@ if (toggle && nav) {
     if (e.target === nav) {
       toggle.classList.remove('is-active');
       nav.classList.remove('is-open');
+      document.body.classList.remove('nav-open');
     }
   });
 }

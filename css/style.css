@@ -499,6 +499,15 @@ h1.article-title {
     width: 100%;
     height: auto;
   }
+
+  #site-map {
+    display: none;
+  }
+
+  body.nav-open #site-map {
+    display: block;
+    z-index: 101;
+  }
 }
 
 @media (max-width: 480px) {
