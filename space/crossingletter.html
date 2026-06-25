@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crossing letter – GoodNews SPACE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400&family=Noto+Sans+JP:wght@200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ヘッダー下にチャットエリアを配置 */
+    #chat-root {
+      height: 100dvh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding: 30px 0 80px;
+      box-sizing: border-box;
+      width: 100%;
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      color: #222;
+    }
+
+    .row { display: flex; margin: 80px 0; }
+    .row.left  { justify-content: flex-start;  padding-left: 100px; }
+    .row.right { justify-content: flex-end;    padding-right: 100px; text-align: right; }
+
+    @media (max-width: 768px) {
+      .row { margin: 50px 0; }
+      .row.left  { padding-left: 20px; }
+      .row.right { padding-right: 20px; }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      max-width: 33vw;
+      width: fit-content;
+    }
+
+    @media (max-width: 768px) {
+      .content { max-width: 75vw; }
+    }
+
+    .message {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    @media (max-width: 480px) { .message { font-size: 14px; } }
+
+    .image {
+      width: 280px; height: 210px; object-fit: cover;
+      border-radius: 14px; cursor: pointer; transition: transform 0.2s ease;
+    }
+    .image:hover { transform: scale(1.02); }
+    @media (max-width: 768px) { .image { width: 192px; height: 144px; } }
+
+    .timestamp {
+      font-family: "Noto Sans JP", sans-serif;
+      font-weight: 200; font-size: 12px; color: #888;
+    }
+    @media (max-width: 480px) { .timestamp { font-size: 9px; } }
+
+    /* ポップアップ */
+    .image-popup-overlay {
+      position: fixed; inset: 0; background: rgba(255,255,255,0.7);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+    }
+    .image-popup-overlay.active { opacity: 1; pointer-events: all; }
+    .popup-container { position: relative; display: flex; flex-direction: column; align-items: center; }
+    @media (max-width: 1024px) { .popup-container { margin-top: 60px; } }
+    .image-popup { max-width: 90vw; max-height: 80vh; object-fit: contain; box-shadow: 0 0 20px rgba(0,0,0,0.2); }
+    .popup-footer { display: flex; justify-content: center; align-items: center; margin-top: 14px; width: 100%; }
+    .close-btn { font-size: 30px; color: #888; background: transparent; border: none; cursor: pointer; opacity: 0.8; }
+    .close-btn:hover { opacity: 1; }
+
+    .time-gap { height: 0; }
+
+    /* 「最新へ」ボタン */
+    .scroll-bottom-btn {
+      position: fixed; right: 20px; bottom: 20px; z-index: 10000;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border-radius: 9999px;
+      background: rgba(0,0,0,0.1); color: #fff; border: none; cursor: pointer;
+      font-family: "Noto Sans JP", sans-serif; font-size: 14px;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease;
+      transform: translateY(10px);
+    }
+    .scroll-bottom-btn.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    @media (max-width: 768px) {
+      .scroll-bottom-btn { right: 12px; bottom: 12px; padding: 9px 12px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html" class="logo" aria-label="GoodNews">
+      <img src="../image/logo/GN_logo_blk.svg" alt="GoodNews">
+    </a>
+    <nav>
+      <a href="../index.html">ABOUT</a>
+      <a href="../news.html">NEWS</a>
+      <a href="../archive.html">ARCHIVE</a>
+      <a href="../space.html">SPACE</a>
+    </nav>
+  </header>
+
+  <div id="chat-root"></div>
+
+  <script>
+  (async function(){
+    const API_URL = "https://script.google.com/macros/s/AKfycbwNT5_TDH-8fFjIw7EJQeDahcO6hJIKwUUhJRIt7yEWcQ-KYXUlT9pbRenOBZ733O8u/exec";
+    const root = document.getElementById("chat-root");
+
+    const scrollBtn = document.createElement("button");
+    scrollBtn.className = "scroll-bottom-btn";
+    scrollBtn.setAttribute("type", "button");
+    scrollBtn.innerHTML = "↓";
+    document.body.appendChild(scrollBtn);
+
+    const showBtnIfAwayFromBottom = () => {
+      const distanceFromBottom = root.scrollHeight - root.scrollTop - root.clientHeight;
+      if (root.scrollTop > 300 && distanceFromBottom > 80) {
+        scrollBtn.classList.add("show");
+      } else {
+        scrollBtn.classList.remove("show");
+      }
+    };
+
+    scrollBtn.addEventListener("click", () => {
+      root.scrollTo({ top: root.scrollHeight, behavior: "smooth" });
+    });
+    root.addEventListener("scroll", showBtnIfAwayFromBottom);
+
+    const fmt = (iso) => {
+      try {
+        const d = new Date(iso);
+        const yy = String(d.getFullYear()).slice(2);
+        const mm = String(d.getMonth()+1).padStart(2,"0");
+        const dd = String(d.getDate()).padStart(2,"0");
+        const hh = String(d.getHours()).padStart(2,"0");
+        const mi = String(d.getMinutes()).padStart(2,"0");
+        return `${yy}/${mm}/${dd} ${hh}:${mi}`;
+      } catch { return ""; }
+    };
+
+    let imageUrls = [];
+    let currentIndex = 0;
+
+    async function load(){
+      try {
+        const res = await fetch(API_URL, { cache: "no-store" });
+        const data = await res.json();
+        render(Array.isArray(data) ? data : []);
+      } catch(e) {
+        console.error(e);
+        root.textContent = "データの読み込みに失敗しました。";
+      }
+    }
+
+    function render(list){
+      root.innerHTML = "";
+      imageUrls = [];
+
+      if (!list.length) {
+        root.textContent = "投稿がありません。";
+        showBtnIfAwayFromBottom();
+        return;
+      }
+
+      let lastTime = null;
+
+      list.forEach(item => {
+        const currentTime = new Date(item.timestamp).getTime();
+        if (lastTime && currentTime - lastTime >= 86400000) {
+          const gap = document.createElement("div");
+          gap.className = "time-gap";
+          root.appendChild(gap);
+        }
+        lastTime = currentTime;
+
+        let side = (item.side || "left").toLowerCase();
+        if (item.username === "riko028470") side = "right";
+
+        const row = document.createElement("div");
+        row.className = `row ${side}`;
+
+        const box = document.createElement("div");
+        box.className = "content";
+
+        if (item.message) {
+          const t = document.createElement("div");
+          t.className = "message";
+          t.textContent = item.message;
+          box.appendChild(t);
+        }
+
+        const url = (item.image_url || "").trim();
+        if (url.startsWith("http")) {
+          const img = document.createElement("img");
+          img.className = "image";
+          img.loading = "lazy";
+          img.src = url;
+          img.alt = "";
+          img.addEventListener("click", (e) => {
+            e.stopPropagation();
+            openPopup(url);
+          });
+          imageUrls.push(url);
+          box.appendChild(img);
+        }
+
+        if (item.timestamp) {
+          const time = document.createElement("div");
+          time.className = "timestamp";
+          time.textContent = fmt(item.timestamp);
+          box.appendChild(time);
+        }
+
+        row.appendChild(box);
+        root.appendChild(row);
+      });
+
+      showBtnIfAwayFromBottom();
+    }
+
+    /* ポップアップ */
+    const overlay = document.createElement("div");
+    overlay.className = "image-popup-overlay";
+
+    const container = document.createElement("div");
+    container.className = "popup-container";
+
+    const popupImg = document.createElement("img");
+    popupImg.className = "image-popup";
+    container.appendChild(popupImg);
+
+    const footer = document.createElement("div");
+    footer.className = "popup-footer";
+
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "close-btn";
+    closeBtn.textContent = "×";
+    closeBtn.addEventListener("click", closePopup);
+
+    footer.appendChild(closeBtn);
+    container.appendChild(footer);
+    overlay.appendChild(container);
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closePopup();
+    });
+
+    function openPopup(url){
+      currentIndex = imageUrls.indexOf(url);
+      popupImg.src = url;
+      overlay.classList.add("active");
+    }
+
+    function closePopup(){
+      overlay.classList.remove("active");
+    }
+
+    /* スワイプ・キーボード操作 */
+    let touchStartX = 0;
+    overlay.addEventListener("touchstart", e => { touchStartX = e.changedTouches[0].screenX; });
+    overlay.addEventListener("touchend", e => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) { diff > 0 ? nextImage() : prevImage(); }
+    });
+
+    document.addEventListener("keydown", e => {
+      if (!overlay.classList.contains("active")) return;
+      if (e.key === "ArrowLeft")  prevImage();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "Escape")     closePopup();
+    });
+
+    function nextImage(){
+      if (imageUrls.length <= 1) return;
+      currentIndex = (currentIndex + 1) % imageUrls.length;
+      popupImg.src = imageUrls[currentIndex];
+    }
+
+    function prevImage(){
+      if (imageUrls.length <= 1) return;
+      currentIndex = (currentIndex - 1 + imageUrls.length) % imageUrls.length;
+      popupImg.src = imageUrls[currentIndex];
+    }
+
+    await load();
+  })();
+  </script>
+</body>
+</html>

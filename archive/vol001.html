@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoodNews Vol.1 – GoodNews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .vol-page {
+      padding: 160px 50px 120px;
+    }
+
+    .vol-layout {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    .vol-section {
+      margin-bottom: 100px;
+    }
+
+    .vol-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .vol-theme {
+      font-size: 13px;
+      line-height: 1.6;
+      text-align: center;
+      color: #444;
+      margin-bottom: 48px;
+    }
+
+    .vol-artist-name {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .vol-work-title {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .vol-img {
+      display: block;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .vol-img-group {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .vol-img-group img {
+      width: calc(33.333% - 6px);
+      display: block;
+    }
+
+    .vol-text {
+      font-size: 13px;
+      line-height: 1.8;
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .vol-link {
+      display: block;
+      font-size: 13px;
+      text-decoration: underline;
+      text-align: center;
+      color: #000;
+      margin-top: 8px;
+    }
+
+    .vol-link:hover {
+      color: #515151;
+    }
+
+    .vol-portrait {
+      display: block;
+      width: 50%;
+      margin: 0 auto 40px;
+    }
+
+    .vol-entries {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .vol-entry {
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .vol-entry-label {
+      margin-bottom: 4px;
+      color: #888;
+    }
+
+    .vol-all-link {
+      display: block;
+      font-size: 13px;
+      text-decoration: underline;
+      text-align: center;
+      color: #000;
+      margin-top: 40px;
+    }
+
+    .vol-all-link:hover {
+      color: #515151;
+    }
+
+    .vol-embed-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      width: 100%;
+    }
+
+    .vol-embed-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .vol-page {
+        padding: 110px 20px 80px;
+      }
+
+      .vol-section {
+        margin-bottom: 70px;
+      }
+
+      .vol-img-group {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .vol-img-group img {
+        width: 100%;
+      }
+
+      .vol-portrait {
+        width: 70%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .vol-page {
+        padding: 100px 16px 64px;
+      }
+
+      .vol-portrait {
+        width: 85%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <header>
+      <a href="../index.html" class="logo" aria-label="GoodNews">
+        <img src="../image/logo/GN_logo_blk.svg" alt="GoodNews">
+      </a>
+      <nav>
+        <a href="../index.html">ABOUT</a>
+        <a href="../news.html">NEWS</a>
+        <a href="../archive.html">ARCHIVE</a>
+        <a href="../space.html">SPACE</a>
+      </nav>
+    </header>
+
+    <main class="vol-page">
+      <div class="vol-layout">
+
+        <!-- 概要 -->
+        <div class="vol-section">
+          <p class="vol-title">GoodNews Vol.1</p>
+          <p class="vol-theme">theme : 記録</p>
+          <img class="vol-img"
+               src="../image/archive/vol1/vol1-1.jpg"
+               alt="GoodNews Vol.1">
+          <img class="vol-img"
+               src="../image/archive/vol1/vol1-2.jpg"
+               alt="GoodNews Vol.1">
+          <p class="vol-text">
+            GoodNews Vol.1 は2023年3月31日から5月31日の2カ月に渡り公開されました。<br>
+            参加したアーティストは岡千穂、小野台、堀内蓮、toulaviの4名。<br>
+            ビジュアルデザインは0039。
+          </p>
+        </div>
+
+        <!-- 岡 千穂 -->
+        <div class="vol-section">
+          <p class="vol-artist-name">&lt; 岡 千穂 &gt;</p>
+          <p class="vol-work-title">「 00:00FLIGHT 」</p>
+          <img class="vol-img"
+               src="../image/archive/vol1/vol1-3.jpg"
+               alt="00:00FLIGHT">
+          <img class="vol-img"
+               src="../image/archive/vol1/vol1-4.jpg"
+               alt="00:00FLIGHT">
+          <p class="vol-text">以下本人のウェブサイトから今も閲覧が可能です。</p>
+          <a class="vol-link"
+             href="https://okachiho.net/0000flights/#2/-13.12/-43"
+             target="_blank"
+             rel="noopener">okachiho.net</a>
+        </div>
+
+        <!-- 小野 台 -->
+        <div class="vol-section">
+          <p class="vol-artist-name">&lt; 小野 台 &gt;</p>
+          <p class="vol-work-title">「 氈鹿 」</p>
+          <img class="vol-img"
+               src="../image/archive/vol1/vol1-5.jpg"
+               alt="氈鹿">
+          <img class="vol-img"
+               src="../image/archive/vol1/vol1-6.jpg"
+               alt="氈鹿">
+          <img class="vol-img"
+               src="../image/archive/vol1/vol1-7.jpg"
+               alt="氈鹿">
+          <p class="vol-text">「微かな記憶。古ぼけた写真。私のことをじっと見つめていたその眼。私は確かにそこに立っていた。」</p>
+        </div>
+
+        <!-- 堀内 蓮 -->
+        <div class="vol-section">
+          <p class="vol-artist-name">&lt; 堀内 蓮 &gt;</p>
+          <p class="vol-work-title">「 めずらしい朝 」</p>
+          <img class="vol-portrait"
+               src="../image/archive/vol1/vol1-8.jpg"
+               alt="めずらしい朝">
+          <div class="vol-entries">
+            <div class="vol-entry">
+              <p class="vol-entry-label">○ / ○</p>
+              <p>電車で、袖に付いてた毛玉飛ばしたら隣のおじさんにくっついちゃった</p>
+            </div>
+            <div class="vol-entry">
+              <p class="vol-entry-label">○ / ○</p>
+              <p>音楽のない喫茶店で、隣の席の老夫婦が口ずさむ演歌だけが頼りになる。</p>
+            </div>
+            <div class="vol-entry">
+              <p class="vol-entry-label">○ / ○</p>
+              <p>毎日がお葬式のつもりで、真っ黒な服を着ている友達</p>
+            </div>
+            <div class="vol-entry">
+              <p class="vol-entry-label">○ / ○</p>
+              <p>バックにこっそり入れたかんぴょう巻き(少)、絶対に美味しいから許して</p>
+            </div>
+            <div class="vol-entry">
+              <p class="vol-entry-label">○ / ○</p>
+              <p>すごくすごく暗い道<br>
+                 人が立ち止まらないような場所で、カップルが向かい合って静かにアルプス一万尺をしていた。<br>
+                 その横を自転車で通り過ぎることができた。</p>
+            </div>
+            <div class="vol-entry">
+              <p class="vol-entry-label">○ / ○</p>
+              <p>ブラックホール的強さ</p>
+            </div>
+          </div>
+          <a class="vol-all-link" href="vol001-horiuchi.html">all</a>
+        </div>
+
+        <!-- toulavi -->
+        <div class="vol-section">
+          <p class="vol-artist-name">&lt; toulavi &gt;</p>
+          <p class="vol-work-title">「 homeopathy(vocal) 」</p>
+          <div class="vol-embed-wrapper">
+            <iframe src="https://player.vimeo.com/video/813356981?title=0&byline=0&portrait=0"
+                    allowfullscreen
+                    webkitallowfullscreen
+                    mozallowfullscreen>
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toulavi「peephole」– GoodNews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .gnws-page {
+      padding: 160px 50px 100px;
+    }
+
+    .gnws-layout {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    /* アートワーク + メタ情報 */
+    .gnws-header {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      margin-bottom: 60px;
+    }
+
+    .gnws-artwork {
+      width: 336px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .gnws-meta {
+      padding-top: 4px;
+      flex: 1;
+    }
+
+    .gnws-title {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      text-align: right;
+    }
+
+    .gnws-info {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #444;
+      text-align: right;
+    }
+
+    /* 本文 */
+    .gnws-description {
+      font-size: 14px;
+      line-height: 1.8;
+      margin-bottom: 60px;
+      white-space: pre-wrap;
+    }
+
+    .gnws-description p {
+      margin-bottom: 1.8em;
+    }
+
+    .gnws-description p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* リンクセクション */
+    .gnws-links {
+      margin-bottom: 60px;
+      font-size: 14px;
+    }
+
+    .gnws-links .link-label {
+      margin-bottom: 6px;
+    }
+
+    .gnws-links a {
+      display: block;
+      word-break: break-all;
+      margin-bottom: 32px;
+      text-decoration: underline;
+    }
+
+    .gnws-links a:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 埋め込みプレイヤー */
+    .gnws-embeds {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .gnws-embed iframe {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      .gnws-page {
+        padding: 110px 20px 80px;
+      }
+
+      .gnws-header {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .gnws-artwork {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gnws-page {
+        padding: 100px 16px 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="desktop">
+    <header>
+      <a href="../index.html" class="logo" aria-label="GoodNews">
+        <img src="../image/logo/GN_logo_blk.svg" alt="GoodNews">
+      </a>
+      <nav>
+        <a href="../index.html">ABOUT</a>
+        <a href="../news.html">NEWS</a>
+        <a href="../archive.html">ARCHIVE</a>
+        <a href="../space.html">SPACE</a>
+      </nav>
+    </header>
+
+    <main class="gnws-page">
+      <div class="gnws-layout">
+
+        <!-- アートワーク + タイトル -->
+        <div class="gnws-header">
+          <img class="gnws-artwork"
+               src="../image/archive/gnws/gnws001.jpg"
+               alt="toulavi peephole artwork">
+          <div class="gnws-meta">
+            <p class="gnws-title">toulavi 「 peephole 」</p>
+            <p class="gnws-info">2023/10/25<br>artwork by 0039</p>
+          </div>
+        </div>
+
+        <!-- 本文・トラックリスト -->
+        <div class="gnws-description">
+          <p>toulavi - peephole [GNWS-001]<br>
+34minute<br>
+releases October 25, 2023</p>
+
+          <p>授業中居眠りをしていたら<br>
+中庭の方で鳴る電話の音が聞こえました<br>
+ずっと鳴り続けたけど誰も取りませんでした<br>
+あれは僕が出るべきだった</p>
+
+          <p>TRACKS<br>
+1. meridiem<br>
+2. scalar (-2, -2, 0)<br>
+3. mantrana<br>
+4. post<br>
+5. ( new world )symphony<br>
+6. coalsack<br>
+7. post collapse<br>
+8. vector (0, -∞, 0)<br>
+9. autumn(invalid token)</p>
+        </div>
+
+        <!-- リンク -->
+        <div class="gnws-links">
+          <p class="link-label">CD購入</p>
+          <a href="https://goodnewsyou.base.shop/items/79896600" target="_blank" rel="noopener">
+            https://goodnewsyou.base.shop/items/79896600
+          </a>
+          <p class="link-label">サブスクリプション</p>
+          <a href="https://linkco.re/8sBgPGgP" target="_blank" rel="noopener">
+            https://linkco.re/8sBgPGgP
+          </a>
+        </div>
+
+        <!-- 埋め込みプレイヤー -->
+        <div class="gnws-embeds">
+          <div class="gnws-embed">
+            <iframe
+              allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+              height="450"
+              sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+              src="https://embed.music.apple.com/jp/album/peephole/1716133659">
+            </iframe>
+          </div>
+
+          <div class="gnws-embed">
+            <iframe
+              style="border-radius: 12px;"
+              src="https://open.spotify.com/embed/album/2tle4vnVxdzPqr2jJC7z33?utm_source=generator"
+              height="352"
+              allowfullscreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <div class="gnws-embed">
+            <iframe
+              style="border: 0; width: 250px; height: 472px;"
+              src="https://bandcamp.com/EmbeddedPlayer/album=751837171/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"
+              seamless>
+              <a href="https://toulavi.bandcamp.com/album/peephole">peephole by toulavi</a>
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</body>
+</html>
