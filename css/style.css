@@ -131,6 +131,7 @@ h1.article-title {
 
 .article-text {
   font-size: 14px;
+  line-height: 1.8;
   order: 3;
 }
 
@@ -240,7 +241,7 @@ h1.article-title {
 
 .space-list a {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 12px;
 }
 
@@ -391,32 +392,36 @@ h1.article-title {
   }
 
   nav a {
-    font-size: 22px;
+    font-size: 20px;
     letter-spacing: 0.05em;
   }
 
   body {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   /* gnws sub-page overrides */
-  body .gnws-title { font-size: 18px; }
-  body .gnws-info { font-size: 15px; }
+  body .gnws-header { flex-direction: column; align-items: center; }
+  body .gnws-meta,
+  body .gnws-header > div { order: 1; }
+  body .gnws-artwork { order: 2; width: 100%; max-width: 300px; }
+  body .gnws-title { font-size: 16px; text-align: center; }
+  body .gnws-info { font-size: 13px; text-align: center; }
   body .gnws-description,
-  body .gnws-description p { font-size: 16px; }
+  body .gnws-description p { font-size: 13px; line-height: 1.9; }
   body .gnws-notice,
-  body .gnws-notice p { font-size: 15px; }
-  body .gnws-links { font-size: 16px; }
+  body .gnws-notice p { font-size: 12px; line-height: 1.85; }
+  body .gnws-links { font-size: 13px; line-height: 1.8; }
 
   /* vol sub-page overrides */
-  body .vol-title { font-size: 18px; }
-  body .vol-theme { font-size: 15px; }
+  body .vol-title { font-size: 16px; }
+  body .vol-theme { font-size: 13px; }
   body .vol-artist-name,
-  body .vol-work-title { font-size: 16px; }
+  body .vol-work-title { font-size: 13px; line-height: 1.8; }
   body .vol-text,
   body .vol-entry,
   body .vol-link,
-  body .vol-all-link { font-size: 15px; }
+  body .vol-all-link { font-size: 12px; line-height: 1.85; }
 
   .back-link {
     left: 28px;
@@ -436,7 +441,7 @@ h1.article-title {
   }
 
   h1.article-title {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 32px;
   }
 
@@ -449,7 +454,8 @@ h1.article-title {
   }
 
   .article-text {
-    font-size: 16px;
+    font-size: 13px;
+    line-height: 1.8;
   }
 
   .news-list {
@@ -457,7 +463,8 @@ h1.article-title {
   }
 
   .news-item {
-    font-size: 16px;
+    font-size: 13px;
+    line-height: 1.8;
   }
 
   .archive-grid {
@@ -479,7 +486,8 @@ h1.article-title {
   }
 
   .archive-item {
-    font-size: 16px;
+    font-size: 13px;
+    line-height: 1.8;
   }
 
   .space-list {
@@ -487,7 +495,7 @@ h1.article-title {
   }
 
   .space-list a {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .cue-images {
@@ -504,9 +512,21 @@ h1.article-title {
     display: none;
   }
 
+  body.nav-open nav a {
+    display: none;
+  }
+
   body.nav-open #site-map {
     display: block;
     z-index: 101;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%) scale(2);
+    border: none;
+    background: transparent;
   }
 }
 
@@ -580,14 +600,14 @@ h1.article-title {
 
 .sm-hline {
   width: 8px;
-  height: 1px;
+  height: 0.5px;
   background: #000;
   margin-top: 6px;
   flex-shrink: 0;
 }
 
 .sm-vline {
-  width: 1px;
+  width: 0.5px;
   height: 5px;
   background: #000;
 }
@@ -605,7 +625,7 @@ h1.article-title {
   justify-content: center;
   width: 20px;
   height: 13px;
-  border: 1px solid #000;
+  border: 0.5px solid #000;
   font-family: 'Zen Kaku Gothic New', sans-serif;
   font-size: 7px;
   letter-spacing: 0;
