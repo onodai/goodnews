@@ -46,7 +46,7 @@ header {
   justify-content: center;
   width: 57px;
   height: 30px;
-  background: #000;
+  background: transparent;
   flex-shrink: 0;
 }
 
