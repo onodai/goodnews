@@ -411,8 +411,7 @@ h1.article-title {
   body .vol-work-title { font-size: 13px; line-height: 1.8; }
   body .vol-text,
   body .vol-entry,
-  body .vol-link,
-  body .vol-all-link { font-size: 12px; line-height: 1.85; }
+  body .vol-link { font-size: 12px; line-height: 1.85; }
 
   .back-link {
     left: 28px;
