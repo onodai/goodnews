@@ -17,6 +17,10 @@ if (toggle && nav) {
     toggle.classList.add('is-active');
     nav.classList.add('is-open');
     document.body.classList.add('nav-open');
+    // マップのあるページでは、開いた直後はテキストメニューを表示する
+    if (!document.body.classList.contains('no-map')) {
+      document.body.classList.add('map-menu');
+    }
   });
 
   nav.querySelectorAll('a').forEach(a => {
