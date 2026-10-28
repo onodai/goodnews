@@ -40,12 +40,13 @@ if (toggle && nav) {
   const inSub = /\/(news|archive|space)\//.test(window.location.pathname);
   const root = inSub ? '../' : '';
 
+  // URLは .html なしで扱う（'' はトップページ）
   const pages = [
-    'index.html', 'news.html', 'archive.html', 'space.html',
-    ...Array.from({ length: 7 }, (_, i) => `news/news${String(i + 1).padStart(2, '0')}.html`),
-    ...[1, 2, 3, 4, 5].map(n => `archive/gnws${String(n).padStart(3, '0')}.html`),
-    ...[1, 2, 3].map(n => `archive/vol${String(n).padStart(3, '0')}.html`),
-    'space/howto.html', 'space/cue.html', 'space/crossingletter.html'
+    '', 'news', 'archive', 'space',
+    ...Array.from({ length: 7 }, (_, i) => `news/news${String(i + 1).padStart(2, '0')}`),
+    ...[1, 2, 3, 4, 5].map(n => `archive/gnws${String(n).padStart(3, '0')}`),
+    ...[1, 2, 3].map(n => `archive/vol${String(n).padStart(3, '0')}`),
+    'space/howto', 'space/cue', 'space/crossingletter'
   ];
   const colors = ['#FF0000', '#0000FF', '#00A000', '#FFFFFF', '#FFE600'];
   const STORAGE_KEY = 'gn-map-dots';
@@ -74,9 +75,10 @@ if (toggle && nav) {
   }
 
   function isCurrent(page) {
-    const pathname = window.location.pathname;
-    if (page === 'index.html' && pathname.endsWith('/')) return true;
-    return pathname.endsWith('/' + page) || pathname === page;
+    // /news.html と /news、/index.html と / を同じページとして扱う
+    const pathname = window.location.pathname.replace(/\.html$/, '').replace(/\/index$/, '/');
+    if (page === '') return pathname.endsWith('/') && !inSub;
+    return pathname.endsWith('/' + page);
   }
 
   const box = document.createElement('div');
@@ -120,6 +122,6 @@ if (toggle && nav) {
 
     const candidates = pages.filter(p => !isCurrent(p));
     const next = candidates[Math.floor(Math.random() * candidates.length)];
-    window.location.href = root + next;
+    window.location.href = (root + next) || './';
   });
 })();
