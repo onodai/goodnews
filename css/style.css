@@ -563,7 +563,9 @@ h1.article-title {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
+  /* iOS Safari のURLバーの裏までぼかしを広げる */
+  height: 100vh;
+  height: 100lvh;
   z-index: 99;
   background: rgba(245, 254, 255, 0.5);
   backdrop-filter: blur(4px);
@@ -625,6 +627,7 @@ body.nav-open #site-map {
     position: absolute;
     right: 20px;
     bottom: 20px;
+    bottom: calc(20px + 100lvh - 100dvh); /* URLバーに隠れないよう、見えている範囲の右下に置く */
     width: 32px;
     height: 32px;
     font-size: 20px;

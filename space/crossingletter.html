@@ -70,6 +70,7 @@
     /* ポップアップ */
     .image-popup-overlay {
       position: fixed; inset: 0; background: rgba(255,255,255,0.7);
+      bottom: auto; height: 100vh; height: 100lvh; padding-bottom: calc(100lvh - 100dvh);
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       z-index: 9999; opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
     }
@@ -84,12 +85,15 @@
     .time-gap { height: 0; }
 
     /* PCでもハンバーガーメニュー。開くとぼかしの上にテキストメニューを表示 */
+    /* 各レイヤーは height: 100lvh で iOS Safari のURLバーの裏まで広げ、
+       padding-bottom で中身を見えている範囲の中央に置く */
     header { align-items: center; }
     .menu-toggle { display: block; }
     nav { display: none; }
     body.nav-open nav {
       display: flex;
       position: fixed; inset: 0;
+      bottom: auto; height: 100vh; height: 100lvh; padding-bottom: calc(100lvh - 100dvh);
       z-index: -1; /* ヘッダー内でロゴと×ボタンより下に置く */
       flex-direction: column; justify-content: center; align-items: center;
       gap: 40px;
@@ -102,6 +106,7 @@
     /* CLロゴの説明 */
     .cl-about {
       position: fixed; inset: 0; z-index: 10001;
+      bottom: auto; height: 100vh; height: 100lvh; padding-bottom: calc(100lvh - 100dvh);
       display: flex; justify-content: center; align-items: center;
       padding: 0 24px;
       background: rgba(245, 254, 255, 0.5);
